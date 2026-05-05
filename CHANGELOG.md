@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added UI expansion persistence in `popup.js`. The extension now saves the state of manually opened payload cards and nested tree branches per tab. Reopening the popup restores the expanded state for older payloads, while new payloads stack at the top.
 - Integrated a new camera button feature to capture snapshots of the current audit state.
 
-## [1.0.0] - 2026-05-[Insert Original Publish Date]
+## [1.0.0] - 2026-05-03
 
 ### Added
 - Initial Chrome Web Store release of XDM Auditor.
