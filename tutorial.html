@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XDM Auditor - Official Documentation & Tutorial</title>
+    <style>
+        :root {
+            --primary: #0f62fe;
+            --primary-hover: #0353e9;
+            --bg-body: #f4f7f6;
+            --bg-card: #ffffff;
+            --text-main: #161616;
+            --text-muted: #525252;
+            --border: #e0e0e0;
+            --accent-what: #e8f2ff;
+            --accent-what-border: #0f62fe;
+            --accent-how: #defbe6;
+            --accent-how-border: #198038;
+            --accent-when: #fff1f1;
+            --accent-when-border: #da1e28;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #161616;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--primary);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #c6c6c6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: flex;
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 2rem;
+            height: max-content;
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+
+        .sidebar h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            display: block;
+            padding: 0.4rem;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .sidebar ul li a:hover {
+            background: var(--accent-what);
+        }
+
+        .content {
+            flex-grow: 1;
+        }
+
+        .intro-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .intro-card h2 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+            scroll-margin-top: 2rem;
+        }
+
+        .feature-card h2 {
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: #161616;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .block {
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .block-what {
+            background-color: var(--accent-what);
+            border-left: 4px solid var(--accent-what-border);
+        }
+
+        .block-how {
+            background-color: var(--accent-how);
+            border-left: 4px solid var(--accent-how-border);
+        }
+
+        .block-when {
+            background-color: var(--accent-when);
+            border-left: 4px solid var(--accent-when-border);
+        }
+
+        .block strong {
+            display: block;
+            margin-bottom: 0.2rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .block-what strong { color: var(--accent-what-border); }
+        .block-how strong { color: var(--accent-how-border); }
+        .block-when strong { color: var(--accent-when-border); }
+
+        .enterprise-badge {
+            display: inline-block;
+            background: #161616;
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>XDM Auditor</h1>
+        <p>The ultimate plug-and-play Chrome Extension for debugging Adobe Experience Platform Web SDK payloads.</p>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <h3>Documentation</h3>
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#interception">Payload Logging & Persistence</a></li>
+                <li><a href="#pinning">Live Expression Pinning</a></li>
+                <li><a href="#search">Advanced Search & Export</a></li>
+                <li><a href="#environments">Environment Switcher</a></li>
+                <li><a href="#validation">PII & Data Validation</a></li>
+                <li><a href="#snapshots">Audit Snapshots (Camera)</a></li>
+                <li><a href="#ui-controls">UI & Display Controls</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content">
+
+            <!-- Intro -->
+            <section id="intro" class="intro-card">
+                <span class="enterprise-badge">🔒 Enterprise-Grade Security</span>
+                <h2>Welcome to XDM Auditor</h2>
+                <p>XDM Auditor is built specifically for QA testers, data analysts, and implementation engineers who need to inspect Web SDK payloads without the friction of heavy API integrations.</p>
+                <br>
+                <p><strong>100% Local Execution:</strong> No third-party scripts, no NPM packages, and absolutely zero external AI/API proxy connections. All data parsing happens safely inside your browser, making it completely secure for strict financial and healthcare organizations.</p>
+            </section>
+
+            <!-- Payload Logging & Persistence -->
+            <section id="interception" class="feature-card">
+                <h2>1. Payload Interception & UI Persistence</h2>
+                <div class="block block-what">
+                    <strong>What it is</strong>
+                    XDM Auditor silently listens for Web SDK payloads (`interact` calls) in the background. It groups captured logs chronologically by URL. It also features a live payload counter on the extension icon and remembers your expanded tree states per tab.
+                </div>
+                <div class="block block-how">
+                    <strong>How to use it</strong>
+                    Simply navigate to any site running Web SDK. You do not need to keep the popup open. Look at the extension icon in your Chrome toolbar to see the live numerical badge of captured payloads. Click the extension to view them. If you expand a nested JSON tree, close the popup, and reopen it—your tree will remain expanded exactly as you left it.
+                </div>
+                <div class="block block-when">
+                    <strong>When to use it</strong>
+                    Use this constantly. If you arrive late to open the extension, you don't need to refresh the page—the logs are already preserved. The UI persistence saves you from having to repeatedly drill down 14 levels deep into a JSON object every time you click away.
+                </div>
+            </section>
+
+            <!-- Pinning -->
+            <section id="pinning" class="feature-card">
+                <h2>2. Live Expression Pinning & Path Copying</h2>
+                <div class="block block-what">
+                    <strong>What it is</strong>
+                    A feature that lets you lock specific XDM elements to the top of your UI, and a 1-tap button to copy the exact root path of any element.
+                </div>
+                <div class="block block-how">
+                    <strong>How to use it</strong>
+                    Expand a payload. Next to any key-value pair, you will see a <strong>Pin Icon</strong> and a <strong>Copy Icon</strong>. Tap the Copy icon to grab the dot-notation path to your clipboard. Tap the Pin icon (up to 3 elements) to dock that variable to the top of the interface.
+                </div>
+                <div class="block block-when">
+                    <strong>When to use it</strong>
+                    Pinning is a "tester's delight" when you need to track how a specific variable (e.g., `commerce.purchases.value`) changes as you navigate through a multi-step checkout flow. You no longer have to hunt for it in the payload tree on every new page load.
+                </div>
+            </section>
+
+            <!-- Search & Export -->
+            <section id="search" class="feature-card">
+                <h2>3. Multi-Dimensional Search & Smart Export</h2>
+                <div class="block block-what">
+                    <strong>What it is</strong>
+                    A powerful dual-input search engine that filters your payloads, paired with a CSV exporter that respects your search parameters.
+                </div>
+                <div class="block block-how">
+                    <strong>How to use it</strong>
+                    Use the <strong>Search by Key</strong> and/or <strong>Search by Value</strong> inputs. You can type multiple comma-separated keywords (e.g., <code>pageName, url, id</code>) to show only those exact matches. Once filtered, click the <strong>Export CSV</strong> button to download a clean spreadsheet containing only the variables you searched for. Hit <strong>Reset Search</strong> to clear the filters.
+                </div>
+                <div class="block block-when">
+                    <strong>When to use it</strong>
+                    When non-technical reporting teams need to find where a specific value is mapped, or when you need to generate tight, focused documentation for your Standard Operating Procedures (SOPs) without exporting thousands of irrelevant data rows.
+                </div>
+            </section>
+
+            <!-- Environments -->
+            <section id="environments" class="feature-card">
+                <h2>4. Environment Switcher & Active Badge</h2>
+                <div class="block block-what">
+                    <strong>What it is</strong>
+                    An environment injection tool that overrides the live page's Adobe Launch JS library with one of your choosing, coupled with a real-time detector badge.
+                </div>
+                <div class="block block-how">
+                    <strong>How to use it</strong>
+                    Look at the Environment Badge at the top of the popup to see your current state. Hover over it to peek at the effective Launch embed JS URL. To change it, click the <strong>Switch Env</strong> button, paste your target Launch script URL, and apply. The badge will update to confirm the override. Click <strong>Switch-Revert</strong> to instantly remove the override and auto-refresh back to normal.
+                </div>
+                <div class="block block-when">
+                    <strong>When to use it</strong>
+                    Perfect for testing upcoming Development or Staging tag updates directly on your live Production website before publishing the final code.
+                </div>
+            </section>
+
+            <!-- Validation -->
+            <section id="validation" class="feature-card">
+                <h2>5. PII Checker & Payload Evaluator</h2>
+                <div class="block block-what">
+                    <strong>What it is</strong>
+                    Local, heuristic pattern-matching engines that scan your payloads for potential data leaks and structural completeness.
+                </div>
+                <div class="block block-how">
+                    <strong>How to use it</strong>
+                    Click the <strong>Check PII</strong> button. The tool will scan all captured payload values for patterns resembling emails, phone numbers, or credit cards, and highlight them instantly. Click <strong>Evaluate Payload</strong> to generate a 1-tap CSV export that cross-references the `eventType` and suggests industry-standard fields you might have forgotten to track.
+                </div>
+                <div class="block block-when">
+                    <strong>When to use it</strong>
+                    Run the PII check before finalizing any QA sprint to ensure you aren't accidentally sending plain-text user data to Adobe. Use the Evaluator to lint your payload structures against best practices.
+                </div>
+            </section>
+
+            <!-- Snapshots -->
+            <section id="snapshots" class="feature-card">
+                <h2>6. Audit Snapshots & Session Summariser</h2>
+                <div class="block block-what">
+                    <strong>What it is</strong>
+                    A native screenshot utility and a full-journey reporting tool. 
+                </div>
+                <div class="block block-how">
+                    <strong>How to use it</strong>
+                    Click the <strong>Camera Icon</strong> to instantly capture a clean, visual snapshot image of your current filtered view and download it directly to your machine. At the end of your testing run, use the <strong>Session Summariser</strong> to pick your industry type and receive a consolidated CSV of your entire journey.
+                </div>
+                <div class="block block-when">
+                    <strong>When to use it</strong>
+                    Use the Camera button when a stakeholder asks for "proof" that a tag fired correctly. Use the Session Summariser when wrapping up an end-to-end user journey test (like a full e-commerce funnel) to verify all required events fired in sequence.
+                </div>
+            </section>
+
+            <!-- UI Controls -->
+            <section id="ui-controls" class="feature-card">
+                <h2>7. UI & Display Controls</h2>
+                <div class="block block-what">
+                    <strong>What it is</strong>
+                    Accessibility and workspace management tools built for comfort during long audits.
+                </div>
+                <div class="block block-how">
+                    <strong>How to use it</strong>
+                    Toggle the <strong>Dark/Light Mode</strong> switch based on your preference (it defaults to Dark for eye safety). Click the <strong>Clear</strong> button to wipe all payloads from the UI and start a fresh testing trace.
+                </div>
+                <div class="block block-when">
+                    <strong>When to use it</strong>
+                    Switch to Light Mode if you are presenting your screen in a brightly lit conference room. Use the Clear button right before you click a highly specific CTA on the website to isolate that single network request.
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>XDM Auditor &copy; 2026. Built with native Chrome Extension APIs for maximum privacy.</p>
+    </footer>
+
+</body>
+</html>
