@@ -245,7 +245,7 @@
                 <h2>1. Payload Interception & UI Persistence</h2>
                 <div class="block block-what">
                     <strong>What it is</strong>
-                    XDM Auditor silently listens for Web SDK payloads (`interact` calls) in the background. It groups captured logs chronologically by URL. It also features a live payload counter on the extension icon and remembers your expanded tree states per tab.
+                    XDM Auditor silently listens for Web SDK payloads (`interact` calls) in the background. It groups captured logs chronologically by URL. It also features a live payload counter on the extension icon and remembers your expanded tree states per tab even if you close and reopen the tool!
                 </div>
                 <div class="block block-how">
                     <strong>How to use it</strong>
@@ -262,15 +262,15 @@
                 <h2>2. Live Expression Pinning & Path Copying</h2>
                 <div class="block block-what">
                     <strong>What it is</strong>
-                    A feature that lets you lock specific XDM elements to the top of your UI, and a 1-tap button to copy the exact root path of any element.
+                    A feature that lets you lock specific XDM elements to the top of your UI (upto 3 for now), and a 1-tap button to copy the exact root path of any element.
                 </div>
                 <div class="block block-how">
                     <strong>How to use it</strong>
-                    Expand a payload. Next to any key-value pair, you will see a <strong>Pin Icon</strong> and a <strong>Copy Icon</strong>. Tap the Copy icon to grab the dot-notation path to your clipboard. Tap the Pin icon (up to 3 elements) to dock that variable to the top of the interface.
+                    Expand a payload. Next to any key-value pair, you will see a <strong>Pin</strong> icon and a <strong>Copy</strong> Icon. Tap the Copy icon to grab the dot-notation path to your clipboard. Tap the Pin icon (up to 3 elements) to dock that variable to the top of the interface.
                 </div>
                 <div class="block block-when">
                     <strong>When to use it</strong>
-                    Pinning is a "tester's delight" when you need to track how a specific variable (e.g., `commerce.purchases.value`) changes as you navigate through a multi-step checkout flow. You no longer have to hunt for it in the payload tree on every new page load.
+                    Pinning is a "tester's delight" when you need to track how a specific variable (e.g., `web.webPageDetails.name`) changes as you navigate through a multi-page flow. You no longer have to hunt for it in the payload tree on every new page load.
                 </div>
             </section>
 
@@ -283,7 +283,7 @@
                 </div>
                 <div class="block block-how">
                     <strong>How to use it</strong>
-                    Use the <strong>Search by Key</strong> and/or <strong>Search by Value</strong> inputs. You can type multiple comma-separated keywords (e.g., <code>pageName, url, id</code>) to show only those exact matches. Once filtered, click the <strong>Export CSV</strong> button to download a clean spreadsheet containing only the variables you searched for. Hit <strong>Reset Search</strong> to clear the filters.
+                    Use the <strong>Search by Key</strong> and/or <strong>Search by Value</strong> inputs. You can type multiple comma-separated keywords (e.g., <code>pageName,url,id</code>) to show only those exact matches. Once filtered, click the <strong>Export CSV</strong> button to download a clean spreadsheet containing only the variables you searched for. Hit <strong>Reset Search</strong> to clear the filters.
                 </div>
                 <div class="block block-when">
                     <strong>When to use it</strong>
@@ -310,19 +310,19 @@
 
             <!-- Validation -->
             <section id="validation" class="feature-card">
-                <h2>5. PII Checker & Payload Evaluator</h2>
+                <h2>5. PII Checker & Payload Evaluator (Premium, Coming Soon)</h2>
                 <div class="block block-what">
                     <strong>What it is</strong>
                     Local, heuristic pattern-matching engines that scan your payloads for potential data leaks and structural completeness.
                 </div>
-                <div class="block block-how">
+               <!-- <div class="block block-how">
                     <strong>How to use it</strong>
                     Click the <strong>Check PII</strong> button. The tool will scan all captured payload values for patterns resembling emails, phone numbers, or credit cards, and highlight them instantly. Click <strong>Evaluate Payload</strong> to generate a 1-tap CSV export that cross-references the `eventType` and suggests industry-standard fields you might have forgotten to track.
                 </div>
                 <div class="block block-when">
                     <strong>When to use it</strong>
                     Run the PII check before finalizing any QA sprint to ensure you aren't accidentally sending plain-text user data to Adobe. Use the Evaluator to lint your payload structures against best practices.
-                </div>
+                </div> -->
             </section>
 
             <!-- Snapshots -->
@@ -334,7 +334,7 @@
                 </div>
                 <div class="block block-how">
                     <strong>How to use it</strong>
-                    Click the <strong>Camera Icon</strong> to instantly capture a clean, visual snapshot image of your current filtered view and download it directly to your machine. At the end of your testing run, use the <strong>Session Summariser</strong> to pick your industry type and receive a consolidated CSV of your entire journey.
+                    Click the <strong>Camera Icon</strong> to instantly capture a clean, visual snapshot image of your current filtered view and download it directly to your machine. At the end of your testing run, use the <strong>Session Summariser</strong> to pick your industry type and receive a consolidated CSV of your entire journey only after completing the entire journey till the end.
                 </div>
                 <div class="block block-when">
                     <strong>When to use it</strong>
@@ -344,18 +344,18 @@
 
             <!-- UI Controls -->
             <section id="ui-controls" class="feature-card">
-                <h2>7. UI & Display Controls</h2>
+                <h2>7. UI & Display Controls & Melody Sound Control</h2>
                 <div class="block block-what">
                     <strong>What it is</strong>
                     Accessibility and workspace management tools built for comfort during long audits.
                 </div>
                 <div class="block block-how">
                     <strong>How to use it</strong>
-                    Toggle the <strong>Dark/Light Mode</strong> switch based on your preference (it defaults to Dark for eye safety). Click the <strong>Clear</strong> button to wipe all payloads from the UI and start a fresh testing trace.
+                    Toggle the <strong>Dark/Light Mode</strong> switch based on your preference (it defaults to Dark for catchiness but can be switched to Light mode as preferred). Click the <strong>Clear</strong> button to wipe all payloads from the UI and start a fresh testing trace. Click the <strong>No Faah</strong> button to stop or mute the exciting melody/sound :) .
                 </div>
                 <div class="block block-when">
                     <strong>When to use it</strong>
-                    Switch to Light Mode if you are presenting your screen in a brightly lit conference room. Use the Clear button right before you click a highly specific CTA on the website to isolate that single network request.
+                    Switch to Light Mode if you are presenting your screen in a brightly lit conference room or if you prefer light theme. Use the Clear button right before you click a highly specific CTA on the website to isolate that single network request. Use the 'No Faah' button to work normally but turn it ON during Fridays!
                 </div>
             </section>
 
@@ -363,7 +363,7 @@
     </div>
 
     <footer>
-        <p>XDM Auditor &copy; 2026. Built with native Chrome Extension APIs for maximum privacy.</p>
+        <p>XDM Auditor &copy; 2026. Built with 1st hand-experience & native Chrome Extension APIs for maximum privacy by <a href="https://www.linkedin.com/in/sritanurudrapaul/" target="_blank" rel="noopener noreferrer">Sritanu</a>.</p>
     </footer>
 
 </body>
